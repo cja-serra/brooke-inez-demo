@@ -25,27 +25,7 @@
       background: var(--white);
       color: var(--ink);
       font-family: 'Cormorant Garamond', serif;
-      cursor: none;
       overflow-x: hidden;
-    }
-
-    /* CURSOR */
-    .cursor {
-      width: 10px; height: 10px;
-      background: var(--gold);
-      border-radius: 50%;
-      position: fixed; top: 0; left: 0;
-      pointer-events: none; z-index: 9999;
-      mix-blend-mode: multiply;
-    }
-    .cursor-ring {
-      width: 36px; height: 36px;
-      border: 1px solid var(--gold);
-      border-radius: 50%;
-      position: fixed; top: 0; left: 0;
-      pointer-events: none; z-index: 9998;
-      transition: width .3s, height .3s, border-color .3s;
-      opacity: .7;
     }
 
     /* NAV */
@@ -103,7 +83,7 @@
       letter-spacing: .25em; text-transform: uppercase;
       text-decoration: none; padding: 10px 22px;
       border: 1px solid var(--gold); color: var(--deep);
-      transition: background .3s, color .3s; cursor: none;
+      transition: background .3s, color .3s;
     }
     .nav-cta:hover { background: var(--gold); color: white; }
 
@@ -220,26 +200,6 @@
       font-weight: 100; font-size: .58rem;
       letter-spacing: .3em; text-transform: uppercase;
       color: rgba(255,255,255,.4); margin-top: 4px;
-    }
-    .scroll-hint {
-      position: absolute; bottom: 36px; left: 50%;
-      transform: translateX(-50%); z-index: 3;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      opacity: 0; animation: fadeUp 1s ease 2s forwards;
-    }
-    .scroll-hint span {
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 100; font-size: .55rem;
-      letter-spacing: .45em; text-transform: uppercase;
-      color: rgba(255,255,255,.38);
-    }
-    .scroll-line {
-      width: 1px; height: 40px;
-      background: linear-gradient(to bottom, rgba(201,169,110,.7), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%,100% { opacity:.4; } 50% { opacity:1; }
     }
 
     /* STRIP */
@@ -491,9 +451,6 @@
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
 <!-- NAV -->
 <nav>
   <div>
@@ -521,7 +478,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <!-- Gradient placeholder — replace this div with an <img class="hero-img"> once Brooke provides photos -->
+  <!-- Gradient placeholder: replace this div with an <img class="hero-img"> once Brooke provides photos -->
   <div class="hero-img-placeholder"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -533,7 +490,7 @@
         <em>Light &amp; Lens</em>
       </h1>
       <div class="hero-divider"></div>
-      <p class="hero-sub">Professional photography for the moments that matter most — portraits, weddings, families, and beyond.</p>
+      <p class="hero-sub">Professional photography for the moments that matter most: portraits, weddings, families, and beyond.</p>
       <div class="hero-actions">
         <a href="#portfolio" class="btn-gold">View Portfolio</a>
         <a href="#contact" class="btn-outline-white">Book a Session</a>
@@ -544,10 +501,6 @@
       <h4>Rolla, MO</h4>
       <span>Available Nationwide</span>
     </div>
-  </div>
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
   </div>
 </section>
 
@@ -569,7 +522,7 @@
   <div class="intro-label reveal">About Brooke</div>
   <div class="intro-body reveal">
     <h2>Every frame tells<br>a <em>story worth keeping</em></h2>
-    <p>Photography isn't just about beautiful images — it's about preserving the emotions, connections, and milestones that define your life. With a gentle, relaxed approach, I create an experience that feels natural and joyful.</p>
+    <p>Photography isn't just about beautiful images. It's about preserving the emotions, connections, and milestones that define your life. With a gentle, relaxed approach, I create an experience that feels natural and joyful.</p>
     <p>Based in Rolla, Missouri, I have spent 8+ years helping clients feel confident in front of the camera and walk away with photos they treasure for a lifetime.</p>
   </div>
 </section>
@@ -648,7 +601,7 @@
       <input type="email" name="email" placeholder="Email Address" required autocomplete="email">
     </div>
     <input type="tel" name="phone" placeholder="Phone Number (optional)" autocomplete="tel">
-    <textarea name="message" placeholder="Tell me about your session — what are you celebrating?" required></textarea>
+    <textarea name="message" placeholder="Tell me about your session. What are you celebrating?" required></textarea>
     <button type="submit" class="btn-gold">Send Message</button>
   </form>
   <p class="form-success" id="formSuccess">✦ &nbsp; Thank you! I'll be in touch within 24 hours.</p>
@@ -677,34 +630,6 @@
   document.addEventListener('contextmenu', e => e.preventDefault());
   document.querySelectorAll('img').forEach(img => {
     img.addEventListener('dragstart', e => e.preventDefault());
-  });
-
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
-  });
-
-  (function animateRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
-    requestAnimationFrame(animateRing);
-  })();
-
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      ring.style.width = '56px'; ring.style.height = '56px';
-      ring.style.borderColor = 'var(--orchid)';
-    });
-    el.addEventListener('mouseleave', () => {
-      ring.style.width = '36px'; ring.style.height = '36px';
-      ring.style.borderColor = 'var(--gold)';
-    });
   });
 
   // Scroll reveal
