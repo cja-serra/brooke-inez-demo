@@ -673,6 +673,12 @@
 </footer>
 
 <script>
+  // Disable right-click and image drag (photo protection)
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('dragstart', e => e.preventDefault());
+  });
+
   // Custom cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
