@@ -247,8 +247,10 @@
     /* GALLERY */
     .gallery-peek {
       padding: 80px 56px 80px;
-      display: grid; grid-template-columns: 2fr 1fr 1fr;
-      gap: 14px; height: 560px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 340px 220px;
+      gap: 14px;
       background: var(--white);
     }
     .gallery-card {
@@ -256,6 +258,12 @@
       border: 4px solid #ffffff;
       box-shadow: 0 4px 24px rgba(120,60,120,.13);
     }
+    .gallery-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; transition: transform .6s ease;
+    }
+    .gallery-card:hover img { transform: scale(1.04); }
+    .gallery-card.gc-tall { grid-row: span 2; }
     .gallery-card::before {
       content: ''; position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(40,5,40,.85) 0%, transparent 55%);
@@ -275,16 +283,6 @@
     .gallery-card-label h3 {
       font-size: 1.5rem; font-weight: 300;
       color: white; font-style: italic; margin-top: 4px;
-    }
-    .card-bg { width: 100%; height: 100%; display: block; }
-    .card-bg-1 { background: linear-gradient(135deg, #e8c8d8, #b565a7 50%, #5c1a5c); }
-    .card-bg-2 { background: linear-gradient(160deg, #d4a8c7, #8b2580); }
-    .card-bg-3 { background: linear-gradient(180deg, #b565a7, #2a0a2a); }
-    .placeholder-text {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-style: italic; font-size: .95rem;
-      color: rgba(255,255,255,.28); letter-spacing: .1em; pointer-events: none;
     }
 
     /* STATS */
@@ -563,8 +561,9 @@
 
       .intro { grid-template-columns: 1fr; gap: 16px; padding: 64px 24px; }
 
-      .gallery-peek { grid-template-columns: 1fr; height: auto; padding: 0 24px 64px; }
+      .gallery-peek { grid-template-columns: 1fr; grid-template-rows: none; height: auto; padding: 0 24px 64px; }
       .gallery-card { height: 220px; }
+      .gallery-card.gc-tall { grid-row: auto; height: 280px; }
 
       .stats {
         display: grid; grid-template-columns: 1fr 1fr;
@@ -670,31 +669,44 @@
 
 <!-- GALLERY PEEK -->
 <section class="gallery-peek" id="portfolio">
-  <!-- Card 1 (large) -->
-  <div class="gallery-card reveal">
-    <div class="card-bg card-bg-1"></div>
-    <div class="placeholder-text">Portrait Session</div>
+  <!-- Card 1 — tall, spans both rows -->
+  <div class="gallery-card gc-tall reveal">
+    <img src="images/maternity-1.jpeg" alt="Maternity portrait" loading="lazy" />
     <div class="gallery-card-label">
-      <span>Featured Work</span>
-      <h3>Portraits</h3>
+      <span>Motherhood</span>
+      <h3>Maternity</h3>
     </div>
   </div>
   <!-- Card 2 -->
   <div class="gallery-card reveal">
-    <div class="card-bg card-bg-2"></div>
-    <div class="placeholder-text">Wedding</div>
+    <img src="images/mini-session-1.jpeg" alt="Mini session" loading="lazy" />
     <div class="gallery-card-label">
-      <span>Love Stories</span>
-      <h3>Weddings</h3>
+      <span>Fun &amp; Playful</span>
+      <h3>Mini Session</h3>
     </div>
   </div>
   <!-- Card 3 -->
   <div class="gallery-card reveal">
-    <div class="card-bg card-bg-3"></div>
-    <div class="placeholder-text">Family</div>
+    <img src="images/business.jpg" alt="Business headshot" loading="lazy" />
+    <div class="gallery-card-label">
+      <span>Professional</span>
+      <h3>Headshots</h3>
+    </div>
+  </div>
+  <!-- Card 4 -->
+  <div class="gallery-card reveal">
+    <img src="images/maternity-2.jpeg" alt="Maternity session" loading="lazy" />
+    <div class="gallery-card-label">
+      <span>New Beginnings</span>
+      <h3>Maternity</h3>
+    </div>
+  </div>
+  <!-- Card 5 -->
+  <div class="gallery-card reveal">
+    <img src="images/mini-session-2.jpeg" alt="Mini session" loading="lazy" />
     <div class="gallery-card-label">
       <span>Timeless Moments</span>
-      <h3>Families</h3>
+      <h3>Mini Session</h3>
     </div>
   </div>
 </section>
