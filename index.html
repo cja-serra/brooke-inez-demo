@@ -461,6 +461,70 @@
     }
     .dest-card:hover { border-color: var(--orchid); background: var(--white); }
 
+    /* PRICING */
+    .pricing { padding: 120px 56px; background: var(--linen); }
+    .pricing-header { text-align: center; margin-bottom: 72px; }
+    .pricing-header .intro-label { display: inline-block; margin-bottom: 16px; border-top: 1px solid var(--gold-lt); padding-top: 10px; }
+    .pricing-header h2 { font-size: clamp(2rem,4vw,3.5rem); font-weight: 300; color: var(--deep); margin-bottom: 16px; }
+    .pricing-header h2 em { font-style: italic; color: var(--orchid); }
+    .pricing-header p { font-size: 1.05rem; font-weight: 300; line-height: 1.9; color: #5a3a5a; max-width: 480px; margin: 0 auto; }
+    .pricing-group { margin-bottom: 72px; }
+    .pricing-group-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300; font-size: .62rem;
+      letter-spacing: .3em; text-transform: uppercase;
+      color: var(--deep); margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(201,169,110,.35);
+    }
+    .pricing-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .wedding-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; }
+    .pricing-card {
+      background: var(--white); border: 1px solid rgba(201,169,110,.3);
+      padding: 36px 28px; position: relative;
+      transition: border-color .3s, box-shadow .3s;
+      display: flex; flex-direction: column;
+    }
+    .pricing-card:hover { border-color: var(--orchid); box-shadow: 0 6px 28px rgba(120,60,120,.12); }
+    .pricing-featured { border: 2px solid var(--orchid); box-shadow: 0 8px 32px rgba(120,60,120,.18); }
+    .pc-badge {
+      position: absolute; top: -11px; left: 28px;
+      background: var(--gold); color: var(--ink);
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300; font-size: .52rem;
+      letter-spacing: .2em; text-transform: uppercase;
+      padding: 4px 14px;
+    }
+    .pc-name, .pc-tier {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300; font-size: .72rem;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--deep); margin-bottom: 16px;
+    }
+    .pc-price { font-size: 2.8rem; font-weight: 300; color: var(--orchid); line-height: 1; margin-bottom: 8px; }
+    .pc-duration {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300; font-size: .58rem;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--magenta); margin-bottom: 24px;
+      padding-bottom: 24px; border-bottom: 1px solid rgba(201,169,110,.2);
+    }
+    .pc-features { list-style: none; flex: 1; margin-bottom: 28px; }
+    .pc-features li {
+      font-size: .95rem; font-weight: 300;
+      color: #5a3a5a; padding: 7px 0 7px 18px;
+      border-bottom: 1px solid rgba(201,169,110,.12);
+      position: relative;
+    }
+    .pc-features li::before { content: '✦'; position: absolute; left: 0; font-size: .5rem; color: var(--gold); top: 11px; }
+    .pc-features li:last-child { border-bottom: none; }
+    .pricing-card .btn-gold { display: block; text-align: center; margin-top: auto; }
+    .pricing-note { font-size: .9rem; font-weight: 300; color: #7a4a7a; margin-top: 16px; }
+    .pricing-cta { text-align: center; font-size: 1.1rem; font-weight: 300; color: #5a3a5a; }
+    .pricing-cta a { color: var(--orchid); text-decoration: none; transition: color .3s; }
+    .pricing-cta a:hover { color: var(--gold); }
+    .intro-note { font-size: .88rem; font-weight: 300; color: #9a6a9a; margin-top: 4px; }
+
     /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity:0; transform:translateY(22px); }
@@ -521,6 +585,11 @@
       .dest-grid { gap: 12px; }
       .dest-card { padding: 14px 24px; font-size: .62rem; }
 
+      .pricing { padding: 64px 24px; }
+      .pricing-cards { grid-template-columns: 1fr 1fr; }
+      .wedding-cards { grid-template-columns: 1fr; }
+      .pricing-group { margin-bottom: 48px; }
+
       .cta-section { padding: 80px 24px; }
       .form-row { grid-template-columns: 1fr; }
       .contact-form button.btn-gold { width: 100%; padding: 15px 24px; }
@@ -541,6 +610,7 @@
     <li><a href="#">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -631,11 +701,13 @@
 
 <!-- ABOUT / INTRO -->
 <section class="intro" id="about">
-  <div class="intro-label reveal">About Brooke</div>
+  <div class="intro-label reveal">Your Photographer</div>
   <div class="intro-body reveal">
-    <h2>Every frame tells<br>a <em>story worth keeping</em></h2>
-    <p>Photography isn't just about beautiful images. It's about preserving the emotions, connections, and milestones that define your life. With a gentle, relaxed approach, I create an experience that feels natural and joyful.</p>
-    <p>Based in Rolla, Missouri, I have spent 8+ years helping clients feel confident in front of the camera and walk away with photos they treasure for a lifetime.</p>
+    <h2>Natural moments,<br><em>authentically yours</em></h2>
+    <p>I'm a lifestyle and motherhood photographer based in South-Central Missouri. My passion is documenting natural, spontaneous moments that are uniquely yours.</p>
+    <p>For me, the most stunning images are those that portray genuine connection. The messy hair, the belly laughs, the quiet moments between a child and their parents. I'm committed to truly hearing you and seeing your authentic self. Authenticity makes everyone photogenic.</p>
+    <p>My life outside of photography revolves around my family, my role as a wife, chasing my own little ones, and a rather strong dependence on iced coffee.</p>
+    <p class="intro-note"><em>Self-portrait coming soon.</em></p>
   </div>
 </section>
 
@@ -667,8 +739,103 @@
   <div class="dest-grid">
     <div class="dest-card">Rolla, MO</div>
     <div class="dest-card">Kansas City, MO</div>
-    <div class="dest-card">Your Location — just ask</div>
+    <div class="dest-card">Your Location, just ask</div>
   </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+
+  <div class="pricing-header reveal">
+    <span class="intro-label">Investment</span>
+    <h2>Sessions <em>&amp; Packages</em></h2>
+    <p>Transparent pricing. Every package includes professionally edited digital images with a full print release.</p>
+  </div>
+
+  <div class="pricing-group">
+    <div class="pricing-group-label reveal">Portrait Sessions</div>
+    <div class="pricing-cards">
+      <div class="pricing-card reveal">
+        <div class="pc-name">Senior Mini</div>
+        <div class="pc-price">$50</div>
+        <div class="pc-duration">30 Minutes</div>
+        <ul class="pc-features">
+          <li>5 edited images</li>
+          <li>1 destination</li>
+          <li>1 outfit</li>
+        </ul>
+        <a href="#contact" class="btn-gold">Book Now</a>
+      </div>
+      <div class="pricing-card reveal">
+        <div class="pc-name">Senior Full Session</div>
+        <div class="pc-price">$150</div>
+        <div class="pc-duration">1 Hour</div>
+        <ul class="pc-features">
+          <li>10-15 edited images</li>
+          <li>1 destination</li>
+          <li>2 outfits</li>
+          <li>Client closet access</li>
+        </ul>
+        <a href="#contact" class="btn-gold">Book Now</a>
+      </div>
+      <div class="pricing-card reveal">
+        <div class="pc-name">Family, Maternity &amp; Engagements</div>
+        <div class="pc-price">$200</div>
+        <div class="pc-duration">1 Hour</div>
+        <ul class="pc-features">
+          <li>15-20 edited images</li>
+          <li>Great for families, maternity, and engagements</li>
+        </ul>
+        <a href="#contact" class="btn-gold">Book Now</a>
+      </div>
+      <div class="pricing-card reveal">
+        <div class="pc-name">Mini Sessions</div>
+        <div class="pc-price">$125</div>
+        <div class="pc-duration">30 Minutes</div>
+        <ul class="pc-features">
+          <li>Perfect for toddlers</li>
+          <li>Holiday themes (seasonal)</li>
+          <li>Animals</li>
+          <li>Client closet access</li>
+        </ul>
+        <a href="#contact" class="btn-gold">Book Now</a>
+      </div>
+    </div>
+    <p class="pricing-note reveal"><em>More sessions coming soon.</em></p>
+  </div>
+
+  <div class="pricing-group">
+    <div class="pricing-group-label reveal">Weddings</div>
+    <div class="wedding-cards">
+      <div class="pricing-card reveal">
+        <div class="pc-tier">Silver Package</div>
+        <div class="pc-price">$1,800</div>
+        <div class="pc-duration">6 Hours of Coverage</div>
+        <ul class="pc-features">
+          <li>Unlimited edited pictures</li>
+          <li>Online gallery with print release</li>
+          <li>Complimentary 8x10 canvas</li>
+        </ul>
+        <a href="#contact" class="btn-gold">Inquire Now</a>
+      </div>
+      <div class="pricing-card pricing-featured reveal">
+        <div class="pc-badge">Most Complete</div>
+        <div class="pc-tier">Gold Package</div>
+        <div class="pc-price">$2,800</div>
+        <div class="pc-duration">8 Hours of Coverage</div>
+        <ul class="pc-features">
+          <li>Unlimited edited pictures</li>
+          <li>Online gallery with print release</li>
+          <li>1-hour engagement session</li>
+          <li>Complimentary wedding album</li>
+        </ul>
+        <a href="#contact" class="btn-gold">Inquire Now</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="pricing-cta reveal">Have something in mind? <a href="#contact">Let's talk.</a></p>
+
 </section>
 
 <!-- CONTACT / CTA -->
