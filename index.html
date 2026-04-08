@@ -249,7 +249,7 @@
       padding: 80px 56px 80px;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
-      grid-template-rows: 340px 220px;
+      grid-template-rows: 260px 340px 220px;
       gap: 14px;
       background: var(--white);
     }
@@ -263,7 +263,31 @@
       display: block; transition: transform .6s ease;
     }
     .gallery-card:hover img { transform: scale(1.04); }
-    .gallery-card.gc-tall { grid-row: span 2; }
+    .gallery-card.gc-tall { grid-row: 2 / 4; }
+    .gc-wedding {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #d4a8c7 0%, #8b2580 45%, #2a0a2a 100%);
+    }
+    .gc-wedding .gc-coming-soon {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px;
+    }
+    .gc-wedding .gc-coming-soon span {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 100; font-size: .62rem;
+      letter-spacing: .35em; text-transform: uppercase; color: var(--gold);
+    }
+    .gc-wedding .gc-coming-soon h3 {
+      font-size: 2.4rem; font-weight: 300;
+      color: white; font-style: italic;
+    }
+    .gc-wedding .gc-coming-soon p {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: .55rem; letter-spacing: .3em;
+      text-transform: uppercase; color: rgba(255,255,255,.45);
+      margin-top: 6px;
+    }
     .gallery-card::before {
       content: ''; position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(40,5,40,.85) 0%, transparent 55%);
@@ -669,7 +693,15 @@
 
 <!-- GALLERY PEEK -->
 <section class="gallery-peek" id="portfolio">
-  <!-- Card 1 — tall, spans both rows -->
+  <!-- Card 1 — Wedding banner (full width, row 1) -->
+  <div class="gallery-card gc-wedding reveal">
+    <div class="gc-coming-soon">
+      <span>Love Stories</span>
+      <h3>Weddings</h3>
+      <p>Photos coming soon</p>
+    </div>
+  </div>
+  <!-- Card 2 — tall, spans rows 2-3, col 1 -->
   <div class="gallery-card gc-tall reveal">
     <img src="images/maternity-1.jpeg" alt="Maternity portrait" loading="lazy" />
     <div class="gallery-card-label">
@@ -677,7 +709,7 @@
       <h3>Maternity</h3>
     </div>
   </div>
-  <!-- Card 2 -->
+  <!-- Card 3 — row 2, col 2 -->
   <div class="gallery-card reveal">
     <img src="images/mini-session-1.jpeg" alt="Mini session" loading="lazy" />
     <div class="gallery-card-label">
@@ -685,7 +717,7 @@
       <h3>Mini Session</h3>
     </div>
   </div>
-  <!-- Card 3 -->
+  <!-- Card 4 — row 2, col 3 -->
   <div class="gallery-card reveal">
     <img src="images/business.jpg" alt="Business headshot" loading="lazy" />
     <div class="gallery-card-label">
@@ -693,7 +725,7 @@
       <h3>Headshots</h3>
     </div>
   </div>
-  <!-- Card 4 -->
+  <!-- Card 5 — row 3, col 2 -->
   <div class="gallery-card reveal">
     <img src="images/maternity-2.jpeg" alt="Maternity session" loading="lazy" />
     <div class="gallery-card-label">
@@ -701,7 +733,7 @@
       <h3>Maternity</h3>
     </div>
   </div>
-  <!-- Card 5 -->
+  <!-- Card 6 — row 3, col 3 -->
   <div class="gallery-card reveal">
     <img src="images/mini-session-2.jpeg" alt="Mini session" loading="lazy" />
     <div class="gallery-card-label">
