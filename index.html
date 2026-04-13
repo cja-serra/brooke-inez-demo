@@ -112,13 +112,13 @@
        <img class="hero-img" src="your-photo.jpg" alt="Brooke Inez Photography"> */
     .hero-img {
       position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      transform: scale(1.07);
+      object-fit: cover; object-position: center 15%;
+      transform: scale(1.0);
       animation: slowZoom 22s ease-in-out infinite alternate;
     }
     @keyframes slowZoom {
-      from { transform: scale(1.07); }
-      to   { transform: scale(1.13); }
+      from { transform: scale(1.0); }
+      to   { transform: scale(1.05); }
     }
     .hero-overlay {
       position: absolute; inset: 0;
@@ -132,8 +132,16 @@
     .hero-content {
       position: relative; z-index: 2;
       padding: 0 60px 52px;
-      display: flex; justify-content: space-between; align-items: flex-end;
+      display: flex; flex-direction: row;
+      align-items: flex-end; gap: 36px;
       width: 100%;
+    }
+    .hero-text-left { flex-shrink: 0; }
+    .hero-vert-divider {
+      width: 1px; height: 68px;
+      background: rgba(255,255,255,.35);
+      flex-shrink: 0; align-self: flex-end; margin-bottom: 2px;
+      opacity: 0; animation: fadeUp .8s ease .8s forwards;
     }
     .hero-tag {
       font-family: 'Josefin Sans', sans-serif;
@@ -143,24 +151,22 @@
       opacity: 0; animation: fadeUp 1s ease .4s forwards;
     }
     .hero-title {
-      font-size: clamp(2.4rem,4.5vw,5rem);
-      font-weight: 300; line-height: 1.0; color: #ffffff;
+      font-size: clamp(2rem,3.8vw,4rem);
+      font-weight: 300; line-height: 1.05; color: #ffffff;
       opacity: 0; animation: fadeUp 1s ease .7s forwards;
     }
     .hero-title em { font-style: italic; color: #f0cce0; }
-    .hero-divider {
-      width: 48px; height: 1px; background: rgba(255,255,255,.5);
-      margin: 18px 0;
-      opacity: 0; animation: fadeUp .8s ease 1s forwards;
-    }
+    .hero-divider { display: none; }
     .hero-sub {
-      font-size: .95rem; font-weight: 300;
-      color: rgba(255,255,255,.85); max-width: 340px; line-height: 1.7;
-      opacity: 0; animation: fadeUp 1s ease 1.1s forwards;
+      font-size: .88rem; font-weight: 300;
+      color: rgba(255,255,255,.82); max-width: 240px; line-height: 1.7;
+      flex: 1;
+      opacity: 0; animation: fadeUp 1s ease 1.0s forwards;
     }
     .hero-actions {
-      display: flex; gap: 14px; align-items: center; margin-top: 36px;
-      opacity: 0; animation: fadeUp 1s ease 1.3s forwards;
+      display: flex; flex-direction: column; gap: 10px; align-items: stretch;
+      flex-shrink: 0;
+      opacity: 0; animation: fadeUp 1s ease 1.2s forwards;
     }
     .btn-gold {
       font-family: 'Josefin Sans', sans-serif;
@@ -686,10 +692,12 @@
       .mobile-menu { display: block; }
       .nav-social { gap: 8px; }
 
-      .hero-content { flex-direction: column; align-items: flex-start; padding: 0 24px 56px; }
+      .hero-content { flex-direction: column; align-items: flex-start; padding: 0 24px 56px; gap: 16px; }
+      .hero-vert-divider { display: none; }
+      .hero-sub { max-width: 100%; flex: none; }
       .hero-badge { display: none; }
       .hero-tag { letter-spacing: .25em; font-size: .58rem; }
-      .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .hero-actions { flex-direction: row; align-items: flex-start; gap: 12px; }
       .btn-gold, .btn-outline-white { padding: 13px 28px; font-size: .6rem; }
 
       .services-strip { padding: 20px 20px; justify-content: center; gap: 12px; }
@@ -786,19 +794,18 @@
   <img class="hero-img" src="images/hero-brooke.jpg" alt="Brooke Inez Photography">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div>
+    <div class="hero-text-left">
       <div class="hero-tag">Capturing Life's Most Precious Moments</div>
       <h1 class="hero-title">
-        Telling Your<br>
-        Story Through<br>
-        <em>Light &amp; Lens</em>
+        Telling Your Story<br>
+        <em>Through Light &amp; Lens</em>
       </h1>
-      <div class="hero-divider"></div>
-      <p class="hero-sub">Timeless photography for every season of life. Portraits, Milestones, Weddings, and Mini Sessions.</p>
-      <div class="hero-actions">
-        <a href="#portfolio" class="btn-gold">View Portfolio</a>
-        <a href="#contact" class="btn-outline-white">Book a Session</a>
-      </div>
+    </div>
+    <div class="hero-vert-divider"></div>
+    <p class="hero-sub">Timeless photography for every season of life. Portraits, Milestones, Weddings, and Mini Sessions.</p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-gold">View Portfolio</a>
+      <a href="#contact" class="btn-outline-white">Book a Session</a>
     </div>
     <div class="hero-badge">
       <p>Based in</p>
