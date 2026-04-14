@@ -1062,17 +1062,12 @@
   <p class="reveal">Ready to book your session? I'd love to hear from you.</p>
   <div class="gold-rule reveal"></div>
 
-  <!-- FORMSPREE CONTACT FORM -->
-  <!-- TODO: Replace FORMSPREE_ID with your actual form ID from formspree.io -->
+  <!-- CONTACT FORM (mailto fallback for demo) -->
+  <!-- TO GO LIVE: Replace mailto handler below with Formspree — see handoff instructions -->
   <form
     class="contact-form reveal"
-    action="https://formspree.io/f/FORMSPREE_ID"
-    method="POST"
     id="contactForm"
   >
-    <!-- Formspree reply-to -->
-    <input type="hidden" name="_replyto" value="brookeinezphotography@gmail.com">
-
     <div class="form-row">
       <input type="text" name="name" placeholder="Your Name" required autocomplete="name">
       <input type="email" name="email" placeholder="Email Address" required autocomplete="email">
@@ -1179,24 +1174,31 @@
     });
   });
 
-  // Formspree AJAX submission (shows success message instead of redirect)
+  // Contact form — mailto fallback (opens email client with form data pre-filled)
+  // TO GO LIVE: swap this handler for Formspree AJAX submission
   const form = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');
 
-  form.addEventListener('submit', async e => {
+  form.addEventListener('submit', e => {
     e.preventDefault();
-    const data = new FormData(form);
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (res.ok) {
-      form.style.display = 'none';
-      success.style.display = 'block';
-    } else {
-      alert('Something went wrong. Please email me directly at brookeinezphotography@gmail.com');
-    }
+    const name    = form.querySelector('[name="name"]').value.trim();
+    const email   = form.querySelector('[name="email"]').value.trim();
+    const phone   = form.querySelector('[name="phone"]').value.trim();
+    const message = form.querySelector('[name="message"]').value.trim();
+
+    const subject = encodeURIComponent('Photography Inquiry from ' + name);
+    const body    = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      (phone ? 'Phone: ' + phone + '\n' : '') +
+      '\nMessage:\n' + message
+    );
+
+    window.location.href =
+      'mailto:brookeinezphotography@gmail.com?subject=' + subject + '&body=' + body;
+
+    form.style.display = 'none';
+    success.style.display = 'block';
   });
 </script>
 </body>
