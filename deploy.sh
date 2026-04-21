@@ -12,6 +12,7 @@ git push
 lftp -u u771303799,Cjagroup.us1 ftp://151.106.96.170 <<'EOF'
 set ftp:ssl-allow no
 put /Users/throttle/demos/brooke-inez/index.html -o /domains/brookeinezphotography.com/public_html/index.html
+put /Users/throttle/demos/brooke-inez/sitemap.xml -o /domains/brookeinezphotography.com/public_html/sitemap.xml
 mirror -R /Users/throttle/demos/brooke-inez/images /domains/brookeinezphotography.com/public_html/images
 quit
 EOF
