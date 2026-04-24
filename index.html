@@ -1073,21 +1073,15 @@
   <p class="reveal">Ready to book your session? I'd love to hear from you.</p>
   <div class="gold-rule reveal"></div>
 
-  <form
-    class="contact-form reveal"
-    action="https://formspree.io/f/xbdqjeay"
-    method="POST"
-    id="contactForm"
-  >
-    <div class="form-row">
-      <input type="text" name="name" placeholder="Your Name" required autocomplete="name">
-      <input type="email" name="email" placeholder="Email Address" required autocomplete="email">
-    </div>
-    <input type="tel" name="phone" placeholder="Phone Number (optional)" autocomplete="tel">
-    <textarea name="message" placeholder="Tell me about your session. What are you celebrating?" required></textarea>
-    <button type="submit" class="btn-gold">Send Message</button>
-  </form>
-  <p class="form-success" id="formSuccess">✦ &nbsp; Thank you! I'll be in touch within 24 hours.</p>
+  <div class="hb-p-69cf2b88c333c1003de8551e-1"></div>
+  <img height="1" width="1" style="display:none" src="https://www.honeybook.com/p.png?pid=69cf2b88c333c1003de8551e">
+  <script>
+    (function(h,b,s,n,i,p,e,t) {
+      h._HB_ = h._HB_ || {};h._HB_.pid = i;;;;
+      t=b.createElement(s);t.type="text/javascript";t.async=!0;t.src=n;
+      e=b.getElementsByTagName(s)[0];e.parentNode.insertBefore(t,e);
+    })(window,document,"script","https://widget.honeybook.com/assets_users_production/websiteplacements/placement-controller.min.js","69cf2b88c333c1003de8551e");
+  </script>
 </section>
 
 <!-- FOOTER -->
@@ -1185,25 +1179,6 @@
     });
   });
 
-  // Contact form — Formspree AJAX submission
-  const form = document.getElementById('contactForm');
-  const success = document.getElementById('formSuccess');
-
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (res.ok) {
-      form.style.display = 'none';
-      success.style.display = 'block';
-    } else {
-      alert('Something went wrong. Please email me directly at hello@brookeinezphotography.com');
-    }
-  });
 </script>
 </body>
 </html>
